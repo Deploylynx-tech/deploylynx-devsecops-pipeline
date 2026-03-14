@@ -17,7 +17,8 @@ jobs:
       - name: Build Docker Image
         run: docker build -t deploylynx-app .
 
-      - name: Run Trivy Scan
-        uses: aquasecurity/trivy-action@master
+      - name: Run Trivy Filesystem Scan
+        uses: aquasecurity/trivy-action@0.20.0
         with:
-          image-ref: 'deploylynx-app'
+          scan-type: 'fs'
+          scan-ref: '.'
