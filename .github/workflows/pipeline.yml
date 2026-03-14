@@ -17,5 +17,7 @@ jobs:
       - name: Build Docker Image
         run: docker build -t deploylynx-app .
 
-      - name: Security Scan (Trivy)
-        run: docker run --rm aquasec/trivy image deploylynx-app
+      - name: Run Trivy Scan
+        uses: aquasecurity/trivy-action@master
+        with:
+          image-ref: 'deploylynx-app'
